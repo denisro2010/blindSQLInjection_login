@@ -1,0 +1,33 @@
+<HTML>
+	<head>
+		<script src='../jquery.min.js'></script>
+                <script src='../angular.min.js'></script>
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<title>Login</title>
+	</head>
+	<body ng-app=''>
+		<h3>Login aplicación vulnerable</h3>
+		<form action='/login' method='POST'>
+			<table>
+				<tr>
+					<td>Usuario:</td><td><input type='text' name='user'/></td>
+				<tr>
+					<td>Contraseña:</td><td><input type='text' name='pass'/></td>
+				<tr>
+					<td><input type='submit' value='Login'/></td>
+			</table>
+		</form>
+		<p id='message'></p>
+		<script>
+			var params={};
+			window.location.search
+			  .replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str,key,value) {
+			    params[key] = decodeURIComponent(value);
+			  });
+			if(params['user']){ 
+				$('#message').text("Datos incorrectos. ¡Vuelve a intentarlo!");
+			}	
+		</script>
+	</body>
+</HTML>
+
